@@ -26,4 +26,14 @@ async def claim(ctx):
 
     await ctx.send("Click below to enter your claim:", view=OpenModalButton())
 
+@bot.event
+async def on_ready():
+    print(f'Logged in as {bot.user}')
+    await bot.change_presence(
+        activity=discord.Activity(
+            type=discord.ActivityType.competing,
+            name="Brand Operations & Redemption Integration Service"
+        )
+    )
+    
 bot.run(os.environ.get('TOKEN'))
