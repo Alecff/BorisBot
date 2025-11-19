@@ -13,7 +13,7 @@ class ClaimModal(ui.Modal, title="Claim Reward"):
     )
 
     async def on_submit(self, interaction: discord.Interaction):
-        ref = createClaim(self.email.value, 'bob')
+        ref = createClaim(self.email.value, interaction.user.display_name)
         await interaction.response.send_message(
             f"Thanks! Your claim ref is: {ref}",
             ephemeral=True
