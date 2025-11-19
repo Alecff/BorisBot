@@ -1,9 +1,11 @@
-# BaseBot
-A very basic discord.py bot skeleton. Feel free to use. I will include other basic functionalities as time goes on, such as async timers and simple db handlers.
+# BORIS Bot
 
+## Description
+A basic POC for a discord bot to create prize draw claims
 
-Setup - 
+## Setup 
 ```
-- source setup.sh
-- botup
+sh run-env.sh
+source bot-env/bin/activate
+sh install.sh
 ```
