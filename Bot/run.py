@@ -1,15 +1,27 @@
-# created by Sami Bosch on Wednesday, 31 October 2018
+import discord
+import os
+from dotenv import load_dotenv
 
-# This file contains all functions necessary to start up the bot
+load_dotenv()
 
-from discord.ext.commands import Bot
-from message_parser import init
+class MyClient(discord.Client):
+    async def on_ready(self):
+        print(f'Logged on as {self.user}!')
 
+    async def on_message(self, message):
+        print(f'Message from {message.author}: {message.content}')
 
-def runbot(token):
-    """Initializes the client's command handler and other non command related functionalities."""
-    client = Bot(command_prefix="!")
+intents = discord.Intents.default()
+intents.message_content = True
 
-    init(client)
+client = MyClient(intents=intents)
 
-    client.run(token)
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('$hello'):
+        await message.channel.send('Hello!')
+
+client.run(os.environ.get('TOKEN'))
