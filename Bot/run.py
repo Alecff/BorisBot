@@ -4,7 +4,7 @@ import requests
 
 from dotenv import load_dotenv
 from discord.ext import commands
-from Bot import ClaimModal
+import ClaimModal
 
 load_dotenv()
 
@@ -24,7 +24,7 @@ async def claim(ctx):
     class OpenModalButton(discord.ui.View):
         @discord.ui.button(label="Open Claim Form", style=discord.ButtonStyle.primary)
         async def open(self, interaction: discord.Interaction, button: discord.ui.Button):
-            await interaction.response.send_modal(ClaimModal())
+            await interaction.response.send_modal(ClaimModal.ClaimModal())
 
     await ctx.send("Click below to enter your claim:", view=OpenModalButton())
 
