@@ -22,7 +22,7 @@ def createClaim(email, name):
         headers={
             "Authorization": "Bearer " + os.environ.get('PW')
         },   
-    )
+  )
 
     data = json.loads(response.text)
     contact_id = data['data']['contact']['id']
